@@ -32,10 +32,10 @@ Each service is in its own GitHub repository and should be cloned into the corre
    git clone https://github.com/Chinnasittub/ecommerce-infra.git
 
 2. Clone the microservice projects into their folders:
-git clone https://github.com/Chinnasittub/ecommerce-user-service.git 
-git clone https://github.com/Chinnasittub/ecommerce-product-service.git 
-git clone https://github.com/Chinnasittub/ecommerce-shared-library.git 
-git clone https://github.com/Chinnasittub/ecommerce-order-service.git 
+  - git clone https://github.com/Chinnasittub/ecommerce-user-service.git 
+  - git clone https://github.com/Chinnasittub/ecommerce-product-service.git 
+  - git clone https://github.com/Chinnasittub/ecommerce-shared-library.git 
+  - git clone https://github.com/Chinnasittub/ecommerce-order-service.git 
 
 3. Your folder should look like this:
   - EcommerceSln.sln
