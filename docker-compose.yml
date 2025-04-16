@@ -1,0 +1,79 @@
+# version: '3.9'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # default RabbitMQ port
+      - "15672:15672"   # RabbitMQ management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  postgres_user:
+    image: postgres
+    container_name: postgres_user
+    environment:
+      POSTGRES_DB: userdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5443:5432"
+    # volumes:
+    #   - D:/docker-data/postgres_user:/var/lib/postgresql/data
+
+  postgres_product:
+    image: postgres
+    container_name: postgres_product
+    environment:
+      POSTGRES_DB: productdb
+      POSTGRES_USER: product
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5444:5432"
+    # volumes:
+    #   - D:/docker-data/postgres_product:/var/lib/postgresql/data
+
+  postgres_order:
+    image: postgres
+    container_name: postgres_order
+    environment:
+      POSTGRES_DB: orderdb
+      POSTGRES_USER: order
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5445:5432"
+    # volumes:
+    #   - D:/docker-data/postgres_order:/var/lib/postgresql/data
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    ports:
+      - "5031:80"
+    depends_on:
+      - postgres_user
+      - rabbitmq
+
+  product-service:
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    ports:
+      - "5032:80"
+    depends_on:
+      - postgres_product
+      - rabbitmq
+
+  order-service:
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    ports:
+      - "5033:80"
+    depends_on:
+      - postgres_order
+      - rabbitmq
+  
