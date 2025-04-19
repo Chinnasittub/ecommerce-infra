@@ -2,3 +2,8 @@
 bin/
 obj/
 .vs/
+ecommerce-frontend/
+order-service/
+product-service/
+shared-library/
+user-service/

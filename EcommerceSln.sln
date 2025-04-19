@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService", "product-s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "shared-library\SharedLibrary.csproj", "{B9473705-9842-4D3F-9E9B-CCB259A1306E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce-frontend", "ecommerce-frontend\ecommerce-frontend.csproj", "{31F6BE15-935F-F78B-522C-15A5F35ED152}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B9473705-9842-4D3F-9E9B-CCB259A1306E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9473705-9842-4D3F-9E9B-CCB259A1306E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9473705-9842-4D3F-9E9B-CCB259A1306E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31F6BE15-935F-F78B-522C-15A5F35ED152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F6BE15-935F-F78B-522C-15A5F35ED152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F6BE15-935F-F78B-522C-15A5F35ED152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F6BE15-935F-F78B-522C-15A5F35ED152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

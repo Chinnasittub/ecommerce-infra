@@ -1,4 +1,4 @@
-# version: '3.9'
+version: '3.9'
 
 services:
   rabbitmq:
@@ -10,6 +10,8 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+    networks: 
+      - ecommerce-network
 
   postgres_user:
     image: postgres
@@ -20,8 +22,8 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - "5443:5432"
-    # volumes:
-    #   - D:/docker-data/postgres_user:/var/lib/postgresql/data
+    networks: 
+      - ecommerce-network
 
   postgres_product:
     image: postgres
@@ -32,8 +34,8 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - "5444:5432"
-    # volumes:
-    #   - D:/docker-data/postgres_product:/var/lib/postgresql/data
+    networks: 
+      - ecommerce-network
 
   postgres_order:
     image: postgres
@@ -44,36 +46,64 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - "5445:5432"
-    # volumes:
-    #   - D:/docker-data/postgres_order:/var/lib/postgresql/data
+    networks: 
+      - ecommerce-network
 
   user-service:
     build:
-      context: ./user-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: user-service/Dockerfile
     ports:
       - "5031:80"
     depends_on:
       - postgres_user
       - rabbitmq
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: 
+      - ecommerce-network
 
   product-service:
     build:
-      context: ./product-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: product-service/Dockerfile
     ports:
       - "5032:80"
     depends_on:
       - postgres_product
       - rabbitmq
+    networks: 
+      - ecommerce-network
 
   order-service:
     build:
-      context: ./order-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: order-service/Dockerfile
     ports:
       - "5033:80"
     depends_on:
       - postgres_order
       - rabbitmq
+    networks: 
+      - ecommerce-network
+  
+  ecommerce-frontend:
+    build:
+      context: .
+      dockerfile: ecommerce-frontend/DockerFile
+    ports:
+      - "5000:80"
+    depends_on:
+      - user-service
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
+
+
   
