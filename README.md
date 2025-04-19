@@ -21,6 +21,7 @@ ecommerce-infra/
   - product-service/ 
   - shared-library/ 
   - order-service/
+  - ecommerce-frontend
 
 Each service is in its own GitHub repository and should be cloned into the correct folder.
 
@@ -36,6 +37,7 @@ Each service is in its own GitHub repository and should be cloned into the corre
   - git clone https://github.com/Chinnasittub/ecommerce-product-service.git 
   - git clone https://github.com/Chinnasittub/ecommerce-shared-library.git 
   - git clone https://github.com/Chinnasittub/ecommerce-order-service.git 
+  - git clone https://github.com/Chinnasittub/ecommerce-frontend
 
 3. Your folder should look like this:
   - EcommerceSln.sln
@@ -44,6 +46,7 @@ Each service is in its own GitHub repository and should be cloned into the corre
   - product-service/ 
   - shared-library/ 
   - order-service/
+  - ecommerce-frontend/
 
 ## How to Run the Project
 Make sure you have Docker and Docker Compose installed.
@@ -54,6 +57,7 @@ This will start all services.
   - User Service: http://localhost:5031
   - Product Service: http://localhost:5032
   - Order Service: http://localhost:5033
+  - Front-end: http://localhost:5000
 
 ## Notes
 PostgreSQL ports are mapped to:
